@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Python 程式設計期末報告</h1>
+        <p class="col-md-12 fs-4 text-muted">歡迎來到我的多功能整合網站！本網站結合了動態股票即時數據、天氣與交通推薦系統，以及台北在地美食介紹。</p>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">即時股票查詢</h3>
+                <p class="card-text">串接 yfinance API，輸入台股或美股代號，立即獲取最新股價資訊。</p>
+                <a href="/stock" class="btn btn-primary">進入查詢</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">天氣與交通推薦</h3>
+                <p class="card-text">查詢各大城市即時天氣狀況，並根據氣候提供最適合的交通工具建議。</p>
+                <a href="/weather" class="btn btn-success">查看天氣</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">台北美食地圖</h3>
+                <p class="card-text">精心挑選的台北經典必吃美食，附帶捷運站交通指引，老饕最愛！</p>
+                <a href="/food" class="btn btn-warning">尋找美食</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
