@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-center mb-4">🍜 台北必吃美食推薦名單</h2>
+<p class="text-center text-muted mb-5">期末報告特別企劃：嚴選捷運周邊不可錯過的高人氣經典美食！</p>
+
+<div class="row">
+    {% for rest in restaurants %}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-warning">
+            <div class="card-body">
+                <span class="badge bg-warning text-dark mb-2">{{ rest.type }}</span>
+                <h4 class="card-title fw-bold">{{ rest.name }}</h4>
+                <p class="card-text mt-3">{{ rest.desc }}</p>
+            </div>
+            <div class="card-footer bg-transparent border-top-0 text-muted">
+                📍 鄰近捷運站：<span class="text-primary fw-bold">{{ rest.mrt }}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
