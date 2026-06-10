@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4 shadow">
+            <h2 class="mb-4 text-center">☀️ 天氣預報與交通推薦</h2>
+            
+            <form method="POST" class="text-center mb-4">
+                <label class="form-label fs-5 me-3">請選擇查詢城市：</label>
+                <div class="btn-group" role="group">
+                    <button type="submit" name="city" value="台北" class="btn btn-outline-secondary {% if city == '台北' %}active{% endif %}">台北市</button>
+                    <button type="submit" name="city" value="台中" class="btn btn-outline-secondary {% if city == '台中' %}active{% endif %}">台中市</button>
+                    <button type="submit" name="city" value="高雄" class="btn btn-outline-secondary {% if city == '高雄' %}active{% endif %}">高雄市</button>
+                </div>
+            </form>
+
+            {% if weather_info %}
+                <div class="card bg-light mt-3">
+                    <div class="card-header bg-success text-white fs-5">
+                        {{ city }} 的即時資訊
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">目前氣溫：<span class="text-danger fw-bold">{{ weather_info.temp }}</span></h5>
+                        <p class="card-text">天氣狀況：<strong>{{ weather_info.condition }}</strong></p>
+                        <hr>
+                        <p class="card-text text-muted">💡 <strong>交通出行建議：</strong><br>{{ weather_info.traffic }}</p>
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-center text-muted mt-4">請點選上方城市以獲取天氣與交通指南。</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
