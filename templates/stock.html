@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card p-4 shadow">
+            <h2 class="mb-4 text-center">📈 即時股票數據查詢</h2>
+            
+            <form method="POST" class="input-group mb-4">
+                <input type="text" name="ticker" class="form-control" placeholder="輸入股票代號 (例如: 2330 或 AAPL)" value="{{ ticker or '' }}" required>
+                <button class="btn btn-primary" type="submit">查詢股價</button>
+            </form>
+
+            {% if error_msg %}
+                <div class="alert alert-danger" role="alert">{{ error_msg }}</div>
+            {% endif %}
+
+            {% if stock_data %}
+                <div class="border rounded p-3 bg-white">
+                    <h4 class="text-primary mb-3">{{ stock_data.name }}</h4>
+                    <div class="row text-center">
+                        <div class="col-6 mb-3">
+                            <span class="text-muted d-block">最新收盤價</span>
+                            <strong class="fs-2 text-danger">${{ stock_data.price }}</strong>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <span class="text-muted d-block">成交量</span>
+                            <strong class="fs-4">{{ stock_data.volume }}</strong>
+                        </div>
+                        <div class="col-4">
+                            <span class="text-muted d-block">開盤價</span>
+                            <span>${{ stock_data.open }}</span>
+                        </div>
+                        <div class="col-4">
+                            <span class="text-muted d-block">最高價</span>
+                            <span class="text-danger">${{ stock_data.high }}</span>
+                        </div>
+                        <div class="col-4">
+                            <span class="text-muted d-block">最低價</span>
+                            <span class="text-success">${{ stock_data.low }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
